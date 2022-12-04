@@ -5,11 +5,12 @@ import argparse
 
 
 def predict_rub_salary_hh(vacancy):
-    if vacancy["salary"]:
-        salary = vacancy["salary"]
-        if salary["currency"] != "RUR":
-            return None
-        return predict_salary(salary["from"], salary["to"])
+    salary = vacancy["salary"]   
+    if not salary:
+        return None
+    if salary["currency"] != "RUR":
+        return None
+    return predict_salary(salary["from"], salary["to"])
 
 
 def collect_hh_vacancies(keywords):
@@ -28,7 +29,7 @@ def collect_hh_vacancies(keywords):
                 "period": days,
                 "text": word,
                 "search_field": "name",
-                "page": page,
+                "page": page
             }
             try:
                 page_response = requests.get(
