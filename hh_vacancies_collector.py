@@ -39,8 +39,9 @@ def collect_hh_vacancies(keywords):
                 page_payload = page_response.json()
                 pages_number = page_payload["pages"]
                 page += 1
-
-                for vacancy in page_response.json()["items"]:
+                
+                page_vacancies = page_response.json()["items"]
+                for vacancy in page_vacancies:
                     vacancies[word].append(vacancy)
                 print(
                     f"HeadHunter. languages: {word}, page {page} from {pages_number} is append"

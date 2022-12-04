@@ -47,8 +47,9 @@ def collect_superjob_vacancies(keywords, superjob_key):
                 else:
                     pages_number = page_payload["total"] // number_vacancies_on_page
                 page += 1
-
-                for vacancy in page_response.json()["objects"]:
+                
+                page_vacancies = page_response.json()["objects"]
+                for vacancy in page_vacancies:
                     vacancies[word].append(vacancy)
                 print(
                     f"SuperJob. languages: {word}, page {page} from {pages_number} is append"
