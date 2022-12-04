@@ -53,8 +53,8 @@ def collect_hh_vacancies(keywords):
 def draw_hh_statistic(languages):
     hh_vacancies = collect_hh_vacancies(languages)
     hh_statistic = get_vacancies_statistic(hh_vacancies, predict_rub_salary_hh)
-    print()
-    draw_table(hh_statistic, "HeadHunter Moscow")
+    print(draw_table(hh_statistic, "HeadHunter Moscow"))
+    
 
 
 if __name__ == "__main__":

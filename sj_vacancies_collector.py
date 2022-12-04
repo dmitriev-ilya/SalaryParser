@@ -62,8 +62,8 @@ def draw_superjob_statistic(languages, superjob_key):
     sj_statistic = get_vacancies_statistic(
         sj_vacancies, predict_rub_salary_for_superJob
     )
-    print()
-    draw_table(sj_statistic, "SuperJob Moscow")
+    print(draw_table(sj_statistic, "SuperJob Moscow"))
+    
 
 
 if __name__ == "__main__":

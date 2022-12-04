@@ -54,5 +54,4 @@ def draw_table(vacancies_statistic, title):
             ]
         )
     table_instance = DoubleTable(raw_table, title)
-    print(table_instance.table)
-    print()
+    return table_instance.table
