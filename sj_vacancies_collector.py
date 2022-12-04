@@ -68,7 +68,7 @@ def draw_superjob_statistic(languages, superjob_key):
 
 if __name__ == "__main__":
     load_dotenv()
-    SUPERJOB_API_KEY = os.environ["SUPERJOB_API_KEY"]
+    superjob_api_key = os.environ["SUPERJOB_API_KEY"]
 
     parser = argparse.ArgumentParser(
         description="""Скрипт высчитывает среднюю зарлату по вакансиям разработчиков 
@@ -84,4 +84,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    draw_superjob_statistic(args.languages, SUPERJOB_API_KEY)
+    draw_superjob_statistic(args.languages, superjob_api_key)
