@@ -51,12 +51,8 @@ def collect_superjob_vacancies(keywords, superjob_key):
                 page_vacancies = page_response.json()["objects"]
                 for vacancy in page_vacancies:
                     vacancies[word].append(vacancy)
-                print(
-                    f"SuperJob. languages: {word}, page {page} from {pages_number} is append"
-                )
                 time.sleep(0.5)
             except requests.exceptions.HTTPError:
-                print("Oops..Try again")
                 time.sleep(1)
     return vacancies
 

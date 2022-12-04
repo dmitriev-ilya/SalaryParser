@@ -44,12 +44,8 @@ def collect_hh_vacancies(keywords):
                 page_vacancies = page_response.json()["items"]
                 for vacancy in page_vacancies:
                     vacancies[word].append(vacancy)
-                print(
-                    f"HeadHunter. languages: {word}, page {page} from {pages_number} is append"
-                )
                 time.sleep(0.5)
             except requests.exceptions.HTTPError:
-                print("Oops..Try again")
                 time.sleep(1)
     return vacancies
 
