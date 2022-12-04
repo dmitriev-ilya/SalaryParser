@@ -15,17 +15,21 @@ def predict_rub_salary_for_superJob(vacancy):
 def collect_superjob_vacancies(keywords, superjob_key):
     headers = {"X-Api-App-Id": superjob_key}
     vacancies = {}
+    town_id = 4
+    profession_id = 48
+    number_vacancies_on_page = 20
+    vacancies_number_limit = 500
     for word in keywords:
         vacancies[word] = []
         pages_number = 1
         page = 0
         while page < pages_number:
             params = {
-                "town": 4,
-                "catalogues": 48,
+                "town": town_id,
+                "catalogues": profession_id,
                 "keyword": word,
                 "page": page,
-                "count": 20,
+                "count": number_vacancies_on_page
             }
             try:
                 page_response = requests.get(
@@ -36,12 +40,12 @@ def collect_superjob_vacancies(keywords, superjob_key):
                 page_response.raise_for_status()
 
                 page_payload = page_response.json()
-                if page_payload["total"] > 500:
-                    pages_number = 25
-                elif page_payload["total"] < 20:
+                if page_payload["total"] > vacancies_number_limit:
+                    pages_number = vacancies_number_limit // number_vacancies_on_page
+                elif page_payload["total"] < number_vacancies_on_page:
                     pages_number = 1
                 else:
-                    pages_number = page_payload["total"] // 20
+                    pages_number = page_payload["total"] // number_vacancies_on_page
                 page += 1
 
                 for vacancy in page_response.json()["objects"]:

@@ -14,15 +14,18 @@ def predict_rub_salary_hh(vacancy):
 
 def collect_hh_vacancies(keywords):
     vacancies = {}
+    professional_role_id = 96
+    city_id = 1
+    days = 30
     for word in keywords:
         vacancies[word] = []
         pages_number = 1
         page = 0
         while page < pages_number:
             params = {
-                "professional_role": 96,
-                "area": 1,
-                "period": 30,
+                "professional_role": professional_role_id,
+                "area": city_id,
+                "period": days,
                 "text": word,
                 "search_field": "name",
                 "page": page,
