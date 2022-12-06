@@ -41,7 +41,7 @@ def collect_hh_vacancies(keywords):
                 pages_number = page_payload["pages"]
                 page += 1
                 
-                page_vacancies = page_response.json()["items"]
+                page_vacancies = page_payload["items"]
                 for vacancy in page_vacancies:
                     vacancies[word].append(vacancy)
                 time.sleep(0.5)
@@ -54,7 +54,6 @@ def draw_hh_statistic(languages):
     hh_vacancies = collect_hh_vacancies(languages)
     hh_statistic = get_vacancies_statistic(hh_vacancies, predict_rub_salary_hh)
     print(draw_table(hh_statistic, "HeadHunter Moscow"))
-    
 
 
 if __name__ == "__main__":

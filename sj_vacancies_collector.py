@@ -48,7 +48,7 @@ def collect_superjob_vacancies(keywords, superjob_key):
                     pages_number = page_payload["total"] // number_vacancies_on_page
                 page += 1
                 
-                page_vacancies = page_response.json()["objects"]
+                page_vacancies = page_payload["objects"]
                 for vacancy in page_vacancies:
                     vacancies[word].append(vacancy)
                 time.sleep(0.5)
@@ -62,8 +62,7 @@ def draw_superjob_statistic(languages, superjob_key):
     sj_statistic = get_vacancies_statistic(
         sj_vacancies, predict_rub_salary_for_superJob
     )
-    print(draw_table(sj_statistic, "SuperJob Moscow"))
-    
+    print(draw_table(sj_statistic, "SuperJob Moscow"))  
 
 
 if __name__ == "__main__":
