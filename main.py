@@ -21,6 +21,6 @@ if __name__ == "__main__":
     ]
     superjob_key = os.environ["SUPERJOB_API_KEY"]
     
-    draw_hh_statistic(languages)
+    print(draw_hh_statistic(languages))
     print()
-    draw_superjob_statistic(languages, superjob_key)
+    print(draw_superjob_statistic(languages, superjob_key))
